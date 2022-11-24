@@ -14,5 +14,5 @@ fn salute(greeter: c.VALUE, name: c.VALUE) callconv(.C) c.VALUE {
 
 pub export fn Init_zig_example_ext() void {
     const greeter = c.rb_define_class("Greeter", c.rb_cObject);
-    c.rb_define_method(greeter, "salute", @ptrCast(fn (...) callconv(.C) c.VALUE, salute), 1);
+    c.rb_define_method(greeter, "salute", @ptrCast(*const fn (...) callconv(.C) c.VALUE, &salute), 1);
 }
